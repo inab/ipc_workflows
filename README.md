@@ -1,2 +1,1 @@
-# ipc_workflows
-iPC Workflows for VRE
+# iPC Workflows for VRE
