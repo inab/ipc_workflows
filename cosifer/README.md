@@ -16,12 +16,33 @@
 The steps to easily test the workflow is:
 
 - Have nextflow installed.
-- Download input files needed to execute [cosifer](https://github.com/PhosphorylatedRabbits/cosifer).
-- Execute './nextflow.nf'
-- Wait for results.
+- Test 1 (currently fails)
+  - Change to workflow directory
+  - Download example toy input file from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/interactive/data_matrix.csv>.
+  - Use `nextflow` in this way:
+    
+    ```bash
+    nextflow run . --data_matrix=data_matrix.csv --sep=','  --outputsDir=tests/interactive
+    ```
+- Test 2 (currently fails)
+  - Change to workflow directory
+  - Download example input file from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/tcga-brca/rppa-processed.tsv.zip>.
+  - Use `nextflow` in this way:
+    
+    ```bash
+    nextflow run . --data_matrix=rppa-processed.tsv.zip --index_col=0  --outputsDir=tests/rppa
+    ```
+- Test 3
+  - Change to workflow directory
+  - Download example input files from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/tcga-brca/rnaseq-processed.tsv.zip> and <http://ge-lab.org/gskb/4-animal-Results_database_gmt/homo_sapiens_human_gmt2.gmt>.
+  - Use `nextflow` in this way:
+    
+    ```bash
+    nextflow run . --data_matrix=rnaseq-processed.tsv.zip --index_col=0 --hallmark_gene_sets_file=homo_sapiens_human_gmt2.gmt --outputsDir=tests/rnaseq-processed
+    ```
 
 ## Citation
-```
+```bib
 @article{10.1093/bioinformatics/btaa942,
     author = {Manica, Matteo and Bunne, Charlotte and Mathis, Roland and Cadow, Joris and Ahsen, Mehmet Eren and Stolovitzky, Gustavo A and Martínez, María Rodríguez},
     title = "{COSIFER: a python package for the consensus inference of molecular interaction networks}",
