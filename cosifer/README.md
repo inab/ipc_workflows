@@ -1,26 +1,24 @@
 # COSIFER - COnSensus Interaction Network InFErence Workflow
 
-- nextflow.config contains information regarding:
+- [nextflow.config](https://github.com/inab/ipc_workflows/blob/main/cosifer/nextflow.config) contains information regarding:
 
     - COSIFER [container](https://hub.docker.com/r/tsenit/cosifer) to be used.
     - Report files to be produced and their paths.
 
-- nextflow.nf contains:
+- [nextflow.nf](https://github.com/inab/ipc_workflows/blob/main/cosifer/nextflow.nf) contains:
 
 	- Definition of params accepted by the workflow.
 	- Method of params accepted by the workflow on CMD:
         ```
         cosifer -i FILEPATH -o OUTPUT_DIRECTORY
         ```
-        
-    - Processes of the workflow.
-    
-        So, in recap, the steps to easily test the workflow is:
+            
+The steps to easily test the workflow is:
 
-            - Have nextflow installed.
-            - Download input files needed to execute cosifer.
-            - Execute './nextflow.nf'
-            - Wait for results.
+- Have nextflow installed.
+- Download input files needed to execute [cosifer](https://github.com/PhosphorylatedRabbits/cosifer).
+- Execute './nextflow.nf'
+- Wait for results.
 
 ## Citation
 ```
