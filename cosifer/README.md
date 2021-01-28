@@ -9,6 +9,7 @@
 
 	- Definition of params accepted by the workflow.
 	- Method of params accepted by the workflow on CMD:
+	
         ```
         cosifer -i FILEPATH -o OUTPUT_DIRECTORY
         ```
