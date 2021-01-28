@@ -32,13 +32,14 @@ The steps to easily test the workflow is:
     ```bash
     nextflow run . --data_matrix=rppa-processed.tsv.zip --index_col=0  --outputsDir=tests/rppa
     ```
-- Test 3
+- Test 3 (it takes ~1 hour)
   - Change to workflow directory
   - Download example input files from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/tcga-brca/rnaseq-processed.tsv.zip> and <http://ge-lab.org/gskb/4-animal-Results_database_gmt/homo_sapiens_human_gmt2.gmt>.
   - Use `nextflow` in this way:
     
     ```bash
-    nextflow run . --data_matrix=rnaseq-processed.tsv.zip --index_col=0 --hallmark_gene_sets_file=homo_sapiens_human_gmt2.gmt --outputsDir=tests/rnaseq-processed
+    tail -n +2 homo_sapiens_human_gmt2.gmt | head -n 2 > homo_sapiens_human_gmt2-first2.gmt
+    nextflow run . --data_matrix=rnaseq-processed.tsv.zip --index_col=0 --hallmark_gene_sets_file=homo_sapiens_human_gmt2-first2.gmt --outputsDir=tests/rnaseq-processed
     ```
 
 ## Citation
