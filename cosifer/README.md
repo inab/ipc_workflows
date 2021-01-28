@@ -16,7 +16,7 @@
 The steps to easily test the workflow is:
 
 - Have nextflow installed.
-- Test 1 (currently fails)
+- Test 1
   - Change to workflow directory
   - Download example toy input file from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/interactive/data_matrix.csv>.
   - Use `nextflow` in this way:
@@ -24,7 +24,7 @@ The steps to easily test the workflow is:
     ```bash
     nextflow run . --data_matrix=data_matrix.csv --sep=','  --outputsDir=tests/interactive
     ```
-- Test 2 (currently fails)
+- Test 2
   - Change to workflow directory
   - Download example input file from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/tcga-brca/rppa-processed.tsv.zip>.
   - Use `nextflow` in this way:
@@ -32,9 +32,9 @@ The steps to easily test the workflow is:
     ```bash
     nextflow run . --data_matrix=rppa-processed.tsv.zip --index_col=0  --outputsDir=tests/rppa
     ```
-- Test 3 (it takes ~1 hour)
+- Test 3 (it takes a couple of minutes)
   - Change to workflow directory
-  - Download example input files from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/tcga-brca/rnaseq-processed.tsv.zip> and <http://ge-lab.org/gskb/4-animal-Results_database_gmt/homo_sapiens_human_gmt2.gmt>.
+  - Download example input files from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/tcga-brca/rnaseq-processed.tsv.zip> and <http://ge-lab.org/gskb/4-animal-Results_database_gmt/homo_sapiens_human_gmt2.gmt>. We are using only the two first lines from the second file, in order to shorten the test.
   - Use `nextflow` in this way:
     
     ```bash
