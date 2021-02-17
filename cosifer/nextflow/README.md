@@ -1,11 +1,11 @@
 # COSIFER - COnSensus Interaction Network InFErence Workflow
 
-- [nextflow.config](https://github.com/inab/ipc_workflows/blob/main/cosifer/nextflow.config) contains information regarding:
+- [nextflow.config](https://github.com/inab/ipc_workflows/blob/main/cosifer/nextflow/nextflow.config) contains information regarding:
 
     - COSIFER [container](https://hub.docker.com/r/tsenit/cosifer) to be used.
     - Report files to be produced and their paths.
 
-- [nextflow.nf](https://github.com/inab/ipc_workflows/blob/main/cosifer/nextflow.nf) contains:
+- [nextflow.nf](https://github.com/inab/ipc_workflows/blob/main/cosifer/nextflow/nextflow.nf) contains:
 
 	- Definition of params accepted by the workflow.
 	- Method of params accepted by the workflow on CMD:
