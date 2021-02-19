@@ -1,0 +1,5 @@
+data_matrix: 
+  class: File
+  location: "reduced-pbta-gene-expression-rsem-fpkm-collapsed.stranded.csv"
+outdir: "tests/collapsed.stranded/"
+separator: ","
