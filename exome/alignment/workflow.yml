@@ -4,7 +4,7 @@ fastq_files:
 - class: File
   location: U5c_CCGTCC_L001_R2_001.fastq.gz
 reference_genome:
-  class: File
+- class: File
   location: hs37d5.fa.gz
 known_indels_file:
   class: File
