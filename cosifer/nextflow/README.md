@@ -16,7 +16,7 @@
             
 The steps to easily test the workflow is:
 
-- Have nextflow installed.
+- Have [nextflow](https://www.nextflow.io/) installed.
 - Test 1
   - Change to workflow directory
   - Download example toy input file from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/interactive/data_matrix.csv>.
