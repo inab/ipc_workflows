@@ -9,6 +9,7 @@ inputs:
   index_col: {type: int?}
   outdir: {type: string}
   separator: {type: string?}
+  samples_on_rows: {type: boolean?}
 
 outputs:
   resdir: {type: Directory, outputSource: cosifer/resdir}
@@ -22,4 +23,5 @@ steps:
       index_col: index_col
       gmt_filepath: gmt_filepath
       outdir: outdir
+      samples_on_rows: samples_on_rows
     out: [resdir]

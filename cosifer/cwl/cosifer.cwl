@@ -36,8 +36,13 @@ inputs:
     inputBinding:
       position: 5
       prefix: '-o'
-      
-outputs: 
+  samples_on_rows:
+    type: boolean?
+    inputBinding:
+      position: 6
+      prefix: '--samples_on_rows'
+
+outputs:
   resdir:
     type: Directory
     outputBinding:
