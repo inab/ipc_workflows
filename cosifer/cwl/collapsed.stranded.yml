@@ -3,3 +3,4 @@ data_matrix:
   location: "reduced-pbta-gene-expression-rsem-fpkm-collapsed.stranded.csv"
 outdir: "tests/collapsed.stranded/"
 separator: ","
+samples_on_rows: true
