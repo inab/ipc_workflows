@@ -7,7 +7,7 @@ baseCommand: ["samtools", "sort"]
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/samtools:1.3.1--5'
+    dockerPull: 'quay.io/biocontainers/samtools:1.5--2'
   ResourceRequirement:
     outdirMin: 7500
     tmpdirMin: 7700
@@ -22,6 +22,7 @@ inputs:
     type: File
     inputBinding:
       position: 2
+
   threads:
     type: string?
     default: "8"

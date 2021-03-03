@@ -7,7 +7,7 @@ baseCommand: ["picard", "CreateSequenceDictionary"]
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/picard:2.18.25--0'
+    dockerPull: 'quay.io/biocontainers/picard:2.22.2--0'
   ResourceRequirement:
     outdirMin: 7500
     tmpdirMin: 7700

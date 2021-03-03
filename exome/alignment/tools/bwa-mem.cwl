@@ -22,6 +22,7 @@ inputs:
     type: File
     inputBinding:
       position: 4
+
   reference_genome:
     type: File
     inputBinding:
@@ -32,14 +33,17 @@ inputs:
       - .bwt
       - .pac
       - .sa
+
   sample_name:
     type: string
+
   threads:
     type: string?
     default: '2'
     inputBinding:
       position: 1
       prefix: '-t'
+
   read_group:
     type: string
     default: '@RG\\tID:H947YADXX\\tSM:NA12878\\tPL:ILLUMINA'

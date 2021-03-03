@@ -15,30 +15,14 @@ $schemas:
 
 inputs:
   fastq_files: {type: 'File[]', doc: "List of paired-end input FASTQ files"}
-  reference_genome: {type: 'File[]', doc: "Compress FASTA files with the reference genome chromosomes"}
-  known_indels_file: {type: File, doc: "VCF file correlated to reference genome assembly with known indels"}
-  known_sites_file: {type: File, doc: "VCF file correlated to reference genome assembly with know sites (for instance dbSNP)"}
-  chromosome: {type: string, doc: "Label of the chromosome to be used for the analysis. By default all the chromosomes are used"}
+  reference_genome: {type: File, doc: "Compress FASTA files with the reference genome chromosomes"}
   readgroup_str: {type: string, default: '@RG\tID:Seq01p\tSM:Seq01\tPL:ILLUMINA\tPI:330', doc: "Parsing header which should correlate to FASTQ files"}
   sample_name: {type: string, default: 'ABC3', doc: "Sample name"}
 
 outputs:
   md_bam: {type: File, outputSource: picard_markduplicates/md_bam, doc: ""}
-  metrics: {type: File, outputSource: picard_markduplicates/output_metrics, doc: "Several metrics about the result"}
 
 steps:
-  unzipped_known_sites:
-    run: tools/gunzip_known_sites.cwl
-    in:
-      input: known_sites_file
-    out: [output]
-
-  unzipped_known_indels:
-    run: tools/gunzip_known_sites.cwl
-    in:
-      input: known_indels_file
-    out: [output]
-
   gunzip:
     run: tools/gunzip.cwl
     in:
@@ -52,8 +36,8 @@ steps:
         source: gunzip/unzipped_fasta
     out: [dict]
 
-  cutadapt2:
-    run: tools/cutadapt-v.1.18.cwl
+  cutadapt:
+    run: tools/cutadapt.cwl
     in:
       raw_sequences: fastq_files
     out: [trimmed_fastq]
@@ -77,7 +61,7 @@ steps:
     in:
       sample_name: sample_name
       trimmed_fastq:
-        source: cutadapt2/trimmed_fastq
+        source: cutadapt/trimmed_fastq
       read_group: readgroup_str
       reference_genome:
         source: bwa_index/output
@@ -95,7 +79,7 @@ steps:
     in:
       input:
         source: samtools_sort/sorted_bam
-    out: [md_bam, output_metrics]
+    out: [md_bam]
 
 s:author:
   - class: s:Person

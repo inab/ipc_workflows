@@ -7,7 +7,7 @@ baseCommand: ["picard", "MarkDuplicates"]
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/picard:2.18.25--0'
+    dockerPull: 'quay.io/biocontainers/picard:2.22.2--0'
   ResourceRequirement:
     outdirMin: 7500
     tmpdirMin: 7700
@@ -66,7 +66,3 @@ outputs:
       glob: '*.md.bam'
     secondaryFiles:
      - ^.bai
-  output_metrics:
-    type: File
-    outputBinding:
-      glob: '*.metrics.txt'

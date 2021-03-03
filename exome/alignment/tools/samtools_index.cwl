@@ -7,7 +7,7 @@ baseCommand: ["samtools", "faidx"]
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/samtools:1.3.1--5'
+    dockerPull: 'quay.io/biocontainers/samtools:1.5--2'
   InitialWorkDirRequirement:
     listing:
       - entry: $(inputs.input)

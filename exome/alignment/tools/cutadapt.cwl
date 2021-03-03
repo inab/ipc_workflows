@@ -38,7 +38,7 @@ inputs:
       position: 20
       prefix: ''
       separate: false
-
+      
   adaptors_file:
     type: File?
     inputBinding:

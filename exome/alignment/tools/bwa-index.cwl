@@ -25,12 +25,12 @@ inputs:
     type: string?
     inputBinding:
       prefix: -a
-    doc: |
-       BWT construction algorithm: bwtsw or is (Default: auto)
+
   reference_genome:
     type: File
     inputBinding:
       position: 4
+
   block_size:
     type: int?
     inputBinding:

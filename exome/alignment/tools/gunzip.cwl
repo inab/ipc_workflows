@@ -8,7 +8,7 @@ arguments: ["-c", "-v"]
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: 'jlaitinen/lftpalpine'
+    dockerPull: 'ubuntu:xenial'
   ResourceRequirement:
     outdirMin: 7500
     tmpdirMin: 7500
@@ -20,7 +20,7 @@ hints:
 
 inputs:
   reference_file:
-    type: File[]
+    type: File
     inputBinding:
       position: 2
 
@@ -29,4 +29,4 @@ outputs:
     type: stdout
     streamable: true
 
-stdout: $(inputs.reference_file[0].nameroot)
+stdout: $(inputs.reference_file.nameroot)
