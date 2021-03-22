@@ -5,11 +5,11 @@ label: cosifer-workflow
 
 inputs:
   data_matrix: {type: File}
-  gmt_filepath: {type: File?}
-  index_col: {type: int?}
+  gmt_filepath: {type: "File?"}
+  index_col: {type: "int?"}
   outdir: {type: string}
-  separator: {type: string?}
-  samples_on_rows: {type: boolean?}
+  separator: {type: "string?"}
+  samples_on_rows: {type: "boolean?"}
 
 outputs:
   resdir: {type: Directory, outputSource: cosifer/resdir}
