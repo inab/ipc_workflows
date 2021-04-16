@@ -23,7 +23,12 @@ The steps to easily test the workflow is:
   - Use `nextflow` in this way:
     
     ```bash
-    nextflow run . --data_matrix=data_matrix.csv --sep=','  --outputsDir=tests/interactive
+    nextflow run . --data_matrix=data_matrix.csv --sep=',' --outputsDir=tests/interactive
+    ```
+  - If you want to test the workflow with `singularity`, use `nextflow` in this way:
+
+    ```bash
+    nextflow -c singularity-params.json run . --data_matrix=data_matrix.csv --sep=','  --outputsDir=tests/interactive
     ```
 - Test 2
   - Change to workflow directory
@@ -31,7 +36,7 @@ The steps to easily test the workflow is:
   - Use `nextflow` in this way:
     
     ```bash
-    nextflow run . --data_matrix=rppa-processed.tsv.zip --index_col=0  --outputsDir=tests/rppa
+    nextflow run . --data_matrix=rppa-processed.tsv.zip --index_col=0 --outputsDir=tests/rppa
     ```
 - Test 3 (it takes a couple of minutes)
   - Change to workflow directory
