@@ -7,6 +7,11 @@
   - [picard (v.2.22.2)](https://quay.io/repository/biocontainers/picard?tag=2.22.2--0&tab=tags)
   - [samtools (v.1.5)](https://quay.io/repository/biocontainers/samtools?tag=1.5--2&tab=tags)
 
+- can run the workflow using the next command line:
+```bash
+cwltool --outdir={outputs folder} --tmpdir-prefix={intermediate folder} --tmp-outdir-prefix={intermediate folder} alignment/workflow.cwl alignment/workflow.yml
+```
+
 ## samtools
 - input data:
 - output data:
