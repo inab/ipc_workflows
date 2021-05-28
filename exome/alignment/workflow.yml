@@ -1,9 +1,10 @@
 fastq_files:
   - class: File
-    location: U5c_CCGTCC_L001_R1_001.fastq.gz
+    location: data/U5c_CCGTCC_L001_R1_001.fastq.gz
   - class: File
-    location: U5c_CCGTCC_L001_R2_001.fastq.gz
-reference_genome:
+    location: data/U5c_CCGTCC_L001_R2_001.fastq.gz
+reference_fasta:
   class: File
-  location: hs37d5.fa.gz
-readgroup_str: '@RG\tID:H947YADXX\tSM:NA12878\tPL:ILLUMINA'
+  location: data/hs37d5.fa.gz
+readgroup: '@RG\tID:H947YADXX\tSM:NA12878\tPL:ILLUMINA'
+sample_name: 'U5c_CCGTCC_L001'
