@@ -21,10 +21,10 @@ if (params.help) {
 
 workflow {
 	/*
-     * RUN MPILEUP WORKFLOW
+     * RUN EXOME SAMTOOLS WORKFLOW
      */
-    include { MPILEUP } from './workflow/mpileup' addParams( [:] )
-    MPILEUP ()
+    include { SAMTOOLS } from './workflow/samtools' addParams( [:] )
+    SAMTOOLS ()
 }
 
 /*
