@@ -1,2 +1,5 @@
 *.sif
+
 data/
+test/
+intermediate/

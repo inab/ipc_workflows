@@ -1,5 +1,5 @@
-class: Workflow
 cwlVersion: v1.0
+class: Workflow
 id: alignment-workflow
 label: alignment_workflow
 
