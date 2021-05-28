@@ -19,7 +19,7 @@ The steps to easily test the samtools workflow are:
 - Use nextflow in this way:
 
 ```bash
-nextflow main.nf --input samplesheet.csv
+nextflow main.nf --bam {BAM file} --fasta {FASTA file}
 ```
 
 ## pindel workflow
