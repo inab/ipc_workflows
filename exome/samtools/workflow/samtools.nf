@@ -9,7 +9,7 @@
 params.summary_params = [:]
 
 // Check input path parameters to see if they exist
-checkPathParamList = [params.meta, params.bam, params.fasta]
+checkPathParamList = [ params.bam, params.fasta ]
 for (param in checkPathParamList) { if (param) { file(param, checkIfExists: true) } }
 
 // Check mandatory parameters (missing protocol or profile will exit the run)
@@ -32,15 +32,8 @@ def isOffline() {
 ================================================================================
 */
 
-//
-// MODULE: Installed directly from nf-core/modules
-//
-def bcftools_mpileup_options = modules['bcftools_mpileup']
-
-// def bcftools_filter_options = modules['bcftools_filter']
-
-include { BCFTOOLS_MPILEUP } from './modules/nf-core/software/bcftools/mpileup/main' addParams( options: bcftools_mpileup_options )
-// include { BCFTOOLS_FILTER } from './modules/nf-core/software/bcftools/filter/main' addParams( options: bcftools_filter_options )
+include { BCFTOOLS_MPILEUP } from '../modules/nf-core/software/bcftools/mpileup/main' addParams( options: [:] )
+// include { BCFTOOLS_FILTER } from './modules/nf-core/software/bcftools/filter/' addParams( options: [:] )
 
 /*
 ================================================================================
@@ -50,11 +43,7 @@ include { BCFTOOLS_MPILEUP } from './modules/nf-core/software/bcftools/mpileup/m
 
 workflow SAMTOOLS {
 
-    BCFTOOLS_MPILEUP (
-      meta,
-      bam,
-      fasta
-    )
+    BCFTOOLS_MPILEUP ( bam, fasta )
 
     // BCFTOOLS_FILTER ()
 }
