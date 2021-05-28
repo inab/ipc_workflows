@@ -1,21 +1,20 @@
-class: CommandLineTool
 cwlVersion: v1.0
-
-baseCommand: ["bwa" , "mem", "-M", "-p"]
+class: CommandLineTool
+id: bwa-mem
+label: bwa_mem
 
 requirements:
   InlineJavascriptRequirement: {}
-  MultipleInputFeatureRequirement: {}
-  DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/bwa:0.7.17--h84994c4_5'
-  ResourceRequirement:
-    outdirMin: 10500
-    tmpdirMin: 10700
+  InitialWorkDirRequirement:
+    listing:
+      - entry: $(inputs.trimmed_fastq)
+      - entry: $(inputs.reference_genome)
 
 hints:
-  ResourceRequirement:
-    coresMin: 4
-    ramMin: 4000
+  DockerRequirement:
+    dockerPull: 'quay.io/biocontainers/bwa:0.7.17--h84994c4_5'
+
+baseCommand: ["bwa" , "mem", "-M", "-p"]
 
 inputs:
   trimmed_fastq:
@@ -52,7 +51,7 @@ inputs:
       prefix: '-R'
 
 outputs:
-  aligned_sam:
+  output:
     type: File
     outputBinding:
       glob: "*.sam"

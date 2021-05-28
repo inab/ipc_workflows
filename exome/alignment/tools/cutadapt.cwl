@@ -1,19 +1,18 @@
-class: CommandLineTool
 cwlVersion: v1.0
+class: CommandLineTool
 id: cutadapt2
+label: cutadapt2
 
 requirements:
   InlineJavascriptRequirement: {}
-  DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/cutadapt:1.18--py36h14c3975_1'
-  ResourceRequirement:
-    outdirMin: 2500
-    tmpdirMin: 2500
+  InitialWorkDirRequirement:
+    listing:
+      - entry: $(inputs.raw_sequences)
+      - entry: $(inputs.adaptors_file)
 
 hints:
-  ResourceRequirement:
-    coresMin: 4
-    ramMin: 4000
+  DockerRequirement:
+    dockerPull: 'quay.io/biocontainers/cutadapt:1.18--py36h14c3975_1'
 
 baseCommand: ["cutadapt", "--interleaved"]
 
@@ -38,7 +37,7 @@ inputs:
       position: 20
       prefix: ''
       separate: false
-      
+
   adaptors_file:
     type: File?
     inputBinding:
@@ -46,7 +45,7 @@ inputs:
       prefix: '-a'
 
 outputs:
-  trimmed_fastq:
+  output:
     type: File
     outputBinding:
       glob: '*.trimmed.fastq.gz'

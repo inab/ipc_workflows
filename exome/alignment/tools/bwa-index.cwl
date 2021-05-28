@@ -1,22 +1,17 @@
 cwlVersion: v1.0
 class: CommandLineTool
 id: bwa-index
+label: bwa_index
 
 requirements:
   InlineJavascriptRequirement: {}
-  DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/bwa:0.7.17--h84994c4_5'
   InitialWorkDirRequirement:
     listing:
       - entry: $(inputs.reference_genome)
-  ResourceRequirement:
-    outdirMin: 10500
-    tmpdirMin: 10500
 
 hints:
-  ResourceRequirement:
-    ramMin: 4000
-    coresMin: 1
+  DockerRequirement:
+    dockerPull: 'quay.io/biocontainers/bwa:0.7.17--h84994c4_5'
 
 baseCommand: ["bwa", "index"]
 

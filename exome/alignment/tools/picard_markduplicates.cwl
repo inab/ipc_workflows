@@ -1,24 +1,22 @@
 class: CommandLineTool
 cwlVersion: v1.0
 id: picard_markduplicates
-
-baseCommand: ["picard", "MarkDuplicates"]
+label: picard_markduplicates
 
 requirements:
   InlineJavascriptRequirement: {}
-  DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/picard:2.22.2--0'
-  ResourceRequirement:
-    outdirMin: 7500
-    tmpdirMin: 7700
+  InitialWorkDirRequirement:
+    listing:
+      - entry: $(inputs.alignments)
 
 hints:
-  ResourceRequirement:
-    coresMin: 4
-    ramMin: 4000
+  DockerRequirement:
+    dockerPull: 'quay.io/biocontainers/picard:2.22.2--0'
+
+baseCommand: ["picard", "MarkDuplicates"]
 
 inputs:
-  input:
+  alignments:
     type: File
     inputBinding:
       position: 2
@@ -52,15 +50,15 @@ arguments:
     separate: false
   - position: 1
     prefix: 'METRICS_FILE='
-    valueFrom: $(inputs.input.nameroot).metrics.txt
+    valueFrom: $(inputs.alignments.nameroot).metrics.txt
     separate: false
   - position: 3
     prefix: 'OUTPUT='
-    valueFrom: $(inputs.input.nameroot).md.bam
+    valueFrom: $(inputs.alignments.nameroot).md.bam
     separate: false
 
 outputs:
-  md_bam:
+  output:
     type: File
     outputBinding:
       glob: '*.md.bam'

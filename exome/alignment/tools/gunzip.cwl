@@ -1,32 +1,31 @@
-class: CommandLineTool
 cwlVersion: v1.0
+class: CommandLineTool
+id: gunzip
+label: gunzip
+
+requirements:
+  InlineJavascriptRequirement: {}
+  InitialWorkDirRequirement:
+    listing:
+      - $(inputs.reference_genome)
+
+hints:
+  DockerRequirement:
+    dockerPull: 'alpine:3.9'
 
 baseCommand: ["gunzip"]
 
 arguments: ["-c", "-v"]
 
-requirements:
-  InlineJavascriptRequirement: {}
-  DockerRequirement:
-    dockerPull: 'ubuntu:xenial'
-  ResourceRequirement:
-    outdirMin: 7500
-    tmpdirMin: 7500
-
-hints:
-  ResourceRequirement:
-    coresMin: 2
-    ramMin: 5000
-
 inputs:
-  reference_file:
+  reference_genome:
     type: File
     inputBinding:
       position: 2
 
 outputs:
-  unzipped_fasta:
+  output:
     type: stdout
     streamable: true
 
-stdout: $(inputs.reference_file.nameroot)
+stdout: $(inputs.reference_genome.nameroot)
