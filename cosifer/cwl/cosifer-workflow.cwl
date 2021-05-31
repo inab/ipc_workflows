@@ -4,12 +4,12 @@ id: cosifer_workflow
 label: cosifer-workflow
 
 inputs:
-  data_matrix: {type: File}
-  gmt_filepath: {type: File?}
-  index_col: {type: int?}
-  outdir: {type: string}
-  separator: {type: string?}
-  samples_on_rows: {type: boolean?}
+  data_matrix: {type: File, doc: "Gene expression data matrix"}
+  gmt_filepath: {type: "File?", doc: "Optional GMT file to perform inference on multiple gene sets"}
+  index_col: {type: "int?", doc: "Column index in the data. Defaults to None, a.k.a., no index"}
+  outdir: {type: string, doc: "Path to the output directory"}
+  separator: {type: "string?", doc: "Separator for the data. Defaults to ."}
+  samples_on_rows: {type: "boolean?", doc: "Flag that indicates that data contain the samples on rows. Defaults to False."}
 
 outputs:
   resdir: {type: Directory, outputSource: cosifer/resdir}

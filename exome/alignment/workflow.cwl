@@ -1,9 +1,13 @@
-class: Workflow
 cwlVersion: v1.0
-label: align-workflow
+class: Workflow
+id: alignment-workflow
+label: alignment_workflow
+
+doc: |
+  Exome Alignment Workflow
 
 requirements:
-  - class: MultipleInputFeatureRequirement
+  MultipleInputFeatureRequirement: {}
 
 $namespaces:
   s: https://schema.org/
@@ -15,87 +19,71 @@ $schemas:
 
 inputs:
   fastq_files: {type: 'File[]', doc: "List of paired-end input FASTQ files"}
-  reference_genome: {type: 'File[]', doc: "Compress FASTA files with the reference genome chromosomes"}
-  known_indels_file: {type: File, doc: "VCF file correlated to reference genome assembly with known indels"}
-  known_sites_file: {type: File, doc: "VCF file correlated to reference genome assembly with know sites (for instance dbSNP)"}
-  chromosome: {type: string, doc: "Label of the chromosome to be used for the analysis. By default all the chromosomes are used"}
-  readgroup_str: {type: string, default: '@RG\tID:Seq01p\tSM:Seq01\tPL:ILLUMINA\tPI:330', doc: "Parsing header which should correlate to FASTQ files"}
-  sample_name: {type: string, default: 'ABC3', doc: "Sample name"}
+  reference_fasta: {type: File, doc: "Compress FASTA files with the reference genome chromosomes"}
+  readgroup: {type: string, doc: "Parsing header which should correlate to FASTQ files"}
+  sample_name: {type: string, doc: "Sample name"}
 
 outputs:
-  md_bam: {type: File, outputSource: picard_markduplicates/md_bam, doc: ""}
-  metrics: {type: File, outputSource: picard_markduplicates/output_metrics, doc: "Several metrics about the result"}
+  sorted_bam: {type: File, outputSource: picard_markduplicates/output, doc: "Sorted aligned BAM file"}
 
 steps:
-  unzipped_known_sites:
-    run: tools/gunzip_known_sites.cwl
-    in:
-      input: known_sites_file
-    out: [output]
-
-  unzipped_known_indels:
-    run: tools/gunzip_known_sites.cwl
-    in:
-      input: known_indels_file
-    out: [output]
-
   gunzip:
     run: tools/gunzip.cwl
     in:
-      reference_file: reference_genome
-    out: [unzipped_fasta]
+      reference_genome: reference_fasta
+    out: [output]
 
   picard_dictionary:
     run: tools/picard_dictionary.cwl
     in:
       reference_genome:
-        source: gunzip/unzipped_fasta
-    out: [dict]
+        source: gunzip/output
+    out: [output]
 
-  cutadapt2:
-    run: tools/cutadapt-v.1.18.cwl
+  cutadapt:
+    run: tools/cutadapt.cwl
     in:
       raw_sequences: fastq_files
-    out: [trimmed_fastq]
+    out: [output]
 
   bwa_index:
     run: tools/bwa-index.cwl
     in:
       reference_genome:
-        source: gunzip/unzipped_fasta
+        source: gunzip/output
     out: [output]
 
-  samtools_index:
-    run: tools/samtools_index.cwl
+  samtools_faidx:
+    run: tools/samtools_faidx.cwl
     in:
-      input:
-        source: gunzip/unzipped_fasta
-    out: [index_fai]
+      sequences:
+        source: gunzip/output
+    out: [output]
 
   bwa_mem:
     run: tools/bwa-mem.cwl
     in:
       sample_name: sample_name
       trimmed_fastq:
-        source: cutadapt2/trimmed_fastq
-      read_group: readgroup_str
+        source: cutadapt/output
+      read_group: readgroup
       reference_genome:
         source: bwa_index/output
-    out: [aligned_sam]
+    out: [output]
 
   samtools_sort:
-    run: tools/samtools_sort_bam.cwl
+    run: tools/samtools_sort.cwl
     in:
-      input:
-        source: bwa_mem/aligned_sam
-    out: [sorted_bam]
+      bam_unsorted:
+        source: bwa_mem/output
+    out: [output]
 
   picard_markduplicates:
     run: tools/picard_markduplicates.cwl
     in:
-      input:
-        source: samtools_sort/sorted_bam
-    out: [md_bam, output_metrics]
+      alignments:
+        source: samtools_sort/output
+    out: [output]
 
 s:author:
   - class: s:Person

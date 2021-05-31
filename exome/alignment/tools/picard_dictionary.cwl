@@ -1,21 +1,19 @@
-class: CommandLineTool
 cwlVersion: v1.0
+class: CommandLineTool
 id: picard_markduplicates
-
-baseCommand: ["picard", "CreateSequenceDictionary"]
+label: picard_markduplicates
 
 requirements:
   InlineJavascriptRequirement: {}
-  DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/picard:2.18.25--0'
-  ResourceRequirement:
-    outdirMin: 7500
-    tmpdirMin: 7700
+  InitialWorkDirRequirement:
+    listing:
+      - entry: $(inputs.reference_genome)
 
 hints:
-  ResourceRequirement:
-    coresMin: 4
-    ramMin: 4000
+  DockerRequirement:
+    dockerPull: 'quay.io/biocontainers/picard:2.22.2--0'
+
+baseCommand: ["picard", "CreateSequenceDictionary"]
 
 inputs:
   reference_genome:
@@ -32,7 +30,7 @@ arguments:
     valueFrom: $(inputs.reference_genome.nameroot).dict
 
 outputs:
-  dict:
+  output:
     type: File
     outputBinding:
       glob: "*.dict"

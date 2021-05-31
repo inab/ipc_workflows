@@ -1,3 +1,5 @@
-.pyCWLenv/
-work/
 *.sif
+
+data/
+test/
+intermediate/

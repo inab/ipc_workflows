@@ -1,27 +1,28 @@
-class: CommandLineTool
 cwlVersion: v1.0
-id: samtools-bam_sort
+class: CommandLineTool
+id: samtools-sort
+label: samtools_sort
 
-baseCommand: ["samtools", "sort"]
+doc: Sort a BAM file
 
 requirements:
   InlineJavascriptRequirement: {}
-  DockerRequirement:
-    dockerPull: 'quay.io/biocontainers/samtools:1.3.1--5'
-  ResourceRequirement:
-    outdirMin: 7500
-    tmpdirMin: 7700
+  InitialWorkDirRequirement:
+    listing:
+      - entry: $(inputs.bam_unsorted)
 
 hints:
-  ResourceRequirement:
-    coresMin: 8
-    ramMin: 8000
+  DockerRequirement:
+    dockerPull: 'quay.io/biocontainers/samtools:1.5--2'
+
+baseCommand: ["samtools", "sort"]
 
 inputs:
-  input:
+  bam_unsorted:
     type: File
     inputBinding:
       position: 2
+
   threads:
     type: string?
     default: "8"
@@ -32,10 +33,10 @@ inputs:
 arguments:
   - position: 2
     prefix: '-o'
-    valueFrom: $(inputs.input.nameroot).sorted.bam
+    valueFrom: $(inputs.bam_unsorted.nameroot).sorted.bam
 
 outputs:
-  sorted_bam:
+  output:
     type: File
     outputBinding:
       glob: "*.sorted.bam"
