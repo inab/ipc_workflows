@@ -32,7 +32,8 @@ def isOffline() {
 ================================================================================
 */
 
-include { BCFTOOLS_MPILEUP } from '../modules/nf-core/software/bcftools/mpileup/main' addParams( options: [:] )
+include { BCFTOOLS_MPILEUP } from '../modules/nf-core/software/bcftools/mpileup/main.nf' addParams( options: ['args2': '--no-version --ploidy 1 --multiallelic-caller',
+                                                                                                              'args3': '--no-version' ] )
 // include { BCFTOOLS_FILTER } from './modules/nf-core/software/bcftools/filter/' addParams( options: [:] )
 
 /*
@@ -42,8 +43,10 @@ include { BCFTOOLS_MPILEUP } from '../modules/nf-core/software/bcftools/mpileup/
 */
 
 workflow SAMTOOLS {
+    input = [ [ id:'test' ], // meta map
+              [ bam ] ]
 
-    BCFTOOLS_MPILEUP ( bam, fasta )
+    BCFTOOLS_MPILEUP ( input, [ fasta ] )
 
     // BCFTOOLS_FILTER ()
 }
