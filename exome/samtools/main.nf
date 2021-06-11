@@ -16,15 +16,17 @@ def helpMessage() {
 
     The command for running the pipeline is as follows:
 
-    nextflow main.nf --bam sample.bam --fasta sample.fa -profile singularity
+    nextflow main.nf --meta sample.name --bam sample.bam --fasta sample.fa -profile singularity
 
     Mandatory arguments:
+      --meta        [str] Sample name (e.g. tumor or normal)
+
       --bam         [file] Path to input BAM file
 
       --bam         [file] Path to input FASTA file
 
       -profile      [str] Configuration profile to use. Can use multiple (comma separated)
-                          Available: docker, singularity and more
+                          Available: docker, singularity and more.
 
     """.stripIndent()
 }
