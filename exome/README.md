@@ -7,7 +7,7 @@ The steps to easily test the alignment workflow are:
 - Use cwltool in this way:
 
 ```bash
-cwltool --outdir={outputs folder} --tmpdir-prefix={intermediate folder} --tmp-outdir-prefix={intermediate folder} alignment/workflow.cwl alignment/workflow.yml
+cwltool --outdir={outputs folder} --tmpdir-prefix={intermediate folder} --tmp-outdir-prefix={intermediate folder} alignment/workflow.cwl alignment/{normal/tumor}_workflow.yml
 ```
 
 ## samtools workflow
@@ -19,7 +19,7 @@ The steps to easily test the samtools workflow are:
 - Use nextflow in this way:
 
 ```bash
-nextflow main.nf --meta <tumor/normal> --bam {BAM file} --fasta {FASTA file} -profile <docker/singularity>
+nextflow main.nf --meta <normal/tumor> --bam {BAM file} --fasta {FASTA file} -profile <docker/singularity>
 ```
 
 ## pindel workflow
