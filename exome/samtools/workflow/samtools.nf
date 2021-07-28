@@ -33,7 +33,7 @@ def isOffline() {
 ================================================================================
 */
 
-include { SAMTOOLS_MPILEUP } from '../modules/nf-core/modules/samtools/mpileup/main.nf' addParams( options: [:] )
+include { BCFTOOLS_MPILEUP } from '../modules/nf-core/modules/bcftools/mpileup/main.nf' addParams( options: ['args2': '--no-version --ploidy 1 --multiallelic-caller', 'args3': '--no-version' ] )
 
 /*
 ================================================================================
@@ -45,7 +45,7 @@ workflow SAMTOOLS {
 
     input = [ [ id:params.meta, single_end:false ], [ bam ] ]
 
-    SAMTOOLS_MPILEUP ( input, [ fasta ] )
+    BCFTOOLS_MPILEUP ( input, [ fasta ] )
 }
 
 /*
