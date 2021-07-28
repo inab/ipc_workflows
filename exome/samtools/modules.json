@@ -1,0 +1,14 @@
+{
+    "name": "Exome SAMtools Workflow",
+    "homePage": "https://github.com/inab/ipc_workflows/tree/main/exome/samtools",
+    "repos": {
+        "nf-core/modules": {
+            "bcftools/mpileup": {
+                "git_sha": "c5235a983d454787fa0c3247b02086969217163b"
+            },
+            "samtools/mpileup": {
+                "git_sha": "c5235a983d454787fa0c3247b02086969217163b"
+            }
+        }
+    }
+}

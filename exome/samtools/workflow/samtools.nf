@@ -33,7 +33,7 @@ def isOffline() {
 ================================================================================
 */
 
-include { SAMTOOLS_MPILEUP } from '../modules/nf-core/software/samtools/mpileup/main.nf' addParams( options: [:] )
+include { SAMTOOLS_MPILEUP } from '../modules/nf-core/modules/samtools/mpileup/main.nf' addParams( options: [:] )
 
 /*
 ================================================================================
