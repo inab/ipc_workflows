@@ -23,7 +23,7 @@ def helpMessage() {
 
       --bam         [file] Path to input BAM file
 
-      --bam         [file] Path to input FASTA file
+      --fasta       [file] Path to input FASTA file
 
       -profile      [str] Configuration profile to use. Can use multiple (comma separated)
                           Available: docker, singularity and more.
