@@ -5,17 +5,17 @@ label: multiaffinity-workflow
 
 inputs:
   counts: {type: 'File[]', doc: ""}
-  layers: {type: 'File[]', doc: ""}
-  metadata: {type: File, doc: ""}
+  metadata: {type: 'File[]', doc: ""}
+  layers: {type: File, doc: ""}
 
 outputs:
-  output: {type: File, outputSource: multiaffinity/output}
+  output: {type: Directory, outputSource: multiaffinity/output}
 
 steps:
   multiaffinity:
     run: ./multiaffinity.cwl
     in:
       counts: counts
-      layers: layers
       metadata: metadata
+      layers: layers
     out: [output]

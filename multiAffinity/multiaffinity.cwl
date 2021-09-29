@@ -10,27 +10,30 @@ hints:
   DockerRequirement:
     dockerPull: 'marbatlle/multiaffinity:latest'
 
-baseCommand: [bash, -c, run.sh]
+baseCommand: [./multiAffinity]
 
 inputs:
   counts:
     type: 'File[]'
     inputBinding:
       position: 1
-  layers:
+      prefix: '-c'
+  metadata:
     type: 'File[]'
     inputBinding:
       position: 2
-  metadata:
+      prefix: '-m'
+  layers:
     type: File
     inputBinding:
       position: 3
+      prefix: '-n'
 
 outputs:
   output:
-    type: File
+    type: Directory
     outputBinding:
-      glob: '*.txt'
+      glob: '*'
 
 s:author:
   - class: s:Person
