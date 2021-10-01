@@ -8,7 +8,9 @@ $namespaces:
 
 hints:
   DockerRequirement:
-    dockerPull: 'marbatlle/multiaffinity:latest'
+    dockerImageId: 'marbatlle/multiaffinity:latest'
+    dockerFile:
+      $include: 'multiAffinity/Dockerfile'
 
 baseCommand: [./multiAffinity]
 
