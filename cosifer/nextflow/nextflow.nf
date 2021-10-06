@@ -17,7 +17,7 @@ cosifer_input = Channel.of([data_matrix,outdir,''])
 //cosifer_input = Channel.of([data_matrix,outdir,'proc1'])
 
 process cosifer {
-    container "test/tsenit-cosifer-b4d5af45d2fc54b6bff2a9153a8e9054e560302e.img"
+    container "tsenit/cosifer:b4d5af45d2fc54b6bff2a9153a8e9054e560302e"
 
     publishDir "${destdir}", saveAs: { filename -> (destsubdir!='' ? "${destsubdir}/" : '') + filename.minus('resdir/') }
 
