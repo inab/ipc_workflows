@@ -1,5 +1,7 @@
 test*
+intermediate*
 
 *.sif
 
 sample_data/
+multiAffinity/

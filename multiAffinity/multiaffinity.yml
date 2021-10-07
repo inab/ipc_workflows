@@ -4,6 +4,6 @@ counts:
 metadata:
   - class: File
     location: sample_data/GSE81928_filtered_metadata.csv
-layers:
-  class: File
-  location: sample_data/metab_layer.csv
+network:
+  - class: File
+    location: sample_data/metab_layer.csv
