@@ -26,49 +26,52 @@ inputs:
     inputBinding:
       position: 1
       prefix: '-c'
+      itemSeparator: ','
   metadata:
     type: 'File[]'
     inputBinding:
       position: 2
       prefix: '-m'
+      itemSeparator: ','
   network:
     type: 'File[]'
     inputBinding:
       position: 3
       prefix: '-n'
+      itemSeparator: ','
   DESeq2_padj:
-    type: float?
-    default: 0.05
+    type: string?
+    default: "0.05"
     inputBinding:
       position: 4
       prefix: '-a'
   DESeq2_LFC:
-    type: int?
-    default: 1
+    type: string?
+    default: "1.0"
     inputBinding:
       position: 5
       prefix: '-b'
   RRA_Score:
-    type: float?
-    default: 0.05
+    type: string?
+    default: "0.05"
     inputBinding:
       position: 6
       prefix: '-d'
-  waddR_resolution:
-    type: float?
-    default: 0.001
+  waddR_pval:
+    type: string?
+    default: "0.001"
     inputBinding:
       position: 7
       prefix: '-e'
   waddR_permnum:
     type: int?
-    default: 10000
+    default: 100
     inputBinding:
       position: 8
       prefix: '-f'
   multiXrank_r:
-    type: float?
-    default: 0.5
+    type: string?
+    default: "0.5"
     inputBinding:
       position: 9
       prefix: '-g'
@@ -79,8 +82,8 @@ inputs:
       position: 10
       prefix: '-h'
   multiXrank_delta:
-    type: float?
-    default: 0.05
+    type: string?
+    default: "0.05"
     inputBinding:
       position: 11
       prefix: '-i'
