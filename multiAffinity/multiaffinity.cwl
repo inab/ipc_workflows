@@ -16,7 +16,7 @@ requirements:
 
 hints:
   DockerRequirement:
-    dockerPull:: 'marbatlle/multiaffinity:latest'
+    dockerPull: 'marbatlle/multiaffinity:latest'
 
 baseCommand: [multiAffinity]
 
