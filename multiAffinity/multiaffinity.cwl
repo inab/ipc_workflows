@@ -81,23 +81,17 @@ inputs:
     inputBinding:
       position: 10
       prefix: '-h'
-  multiXrank_delta:
-    type: string?
-    default: "0.05"
-    inputBinding:
-      position: 11
-      prefix: '-i'
   Molti_modularity:
     type: int?
     default: 1
     inputBinding:
-      position: 12
+      position: 11
       prefix: '-j'
   Molti_Louvain:
     type: int?
     default: 0
     inputBinding:
-      position: 13
+      position: 12
       prefix: '-k'
 
 outputs:

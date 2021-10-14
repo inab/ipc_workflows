@@ -1,9 +1,9 @@
 counts:
   - class: File
-    location: sample_data/GSE81928_GeneLevel_Raw_data.csv
+    location: sample_data/sample1_data.csv
 metadata:
   - class: File
-    location: sample_data/GSE81928_filtered_metadata.csv
+    location: sample_data/sample1_metadata.csv
 network:
   - class: File
-    location: sample_data/metab_layer.csv
+    location: sample_data/sample_layers.csv
