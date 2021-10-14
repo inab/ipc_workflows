@@ -4,7 +4,7 @@ id: multiaffinity
 label: multiaffinity
 
 $namespaces:
-  s: https://schema.org/
+  s: http://schema.org/
 
 requirements:
   InlineJavascriptRequirement: {}
