@@ -80,7 +80,7 @@ inputs:
     default: 0
     inputBinding:
       position: 10
-      prefix: '-h'
+      prefix: '-i'
   Molti_modularity:
     type: int?
     default: 1
