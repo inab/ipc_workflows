@@ -3,37 +3,50 @@ class: Workflow
 id: multiaffinity_workflow
 label: multiaffinity-workflow
 
+$namespaces:
+  s: http://schema.org/
+
 inputs:
-  counts: {type: 'File[]', doc: "path to count matrices, single or multiple"}
-  metadata: {type: 'File[]', doc: "path to metadata, single or multiple"}
-  network: {type: 'File[]', doc: "path to network, single or multiple"}
-  DESeq2_padj: {type: string?, doc: "sets p-value adjusted for multiple testing used as cutoff in DESeq2 (default is 0.05)"}
-  DESeq2_LFC: {type: string?, doc: "defines log2 foldchange used as cutoff in DESeq2 (default value is 1)"}
-  RRA_Score: {type: string?, doc: "significance score defined by RobustRankAggreg as a cutoff (default is 0.05)"}
-  waddR_pval: {type: string?, doc: "defines p-value used as cutoff for the semi-parametric 2-Wasserstein distance-based test (default is 0.001)"}
-  waddR_permnum: {type: int?, doc: "sets number of permutations used in the Wasserstein test (default is 100)"}
-  multiXrank_r: {type: string?, doc: "defines global restart probability for multiXrank, takes values between 0 and 1 (default is 0.5)"}
-  multiXrank_selfloops: {type: int?, doc: "defines whether self loops are removed or not, takes values 0 or 1 (default is 0)"}
-  Molti_modularity: {type: int?, doc: "sets Newman modularity resolution parameter on molTI-DREAM (default is 1)"}
-  Molti_Louvain: {type: int?, doc: "switches to randomized Louvain on molTI-DREAM and set the number of randomizations (default is 0)"}
+  counts: {type: 'File[]', doc: "Count Matrices of the RNA-Seq studies - List of input CSV files, separated by commas"}
+  metadata: {type: 'File[]', doc: "Metadata of the RNA-Seq studies - Metadata of the RNA-Seq studies"}
+  layers: {type: 'File[]', doc: "Layers of the multilayer networks - List of input CSV files, separated by commas"}
+  approach: {type: 'string?', doc: "Filters the analysis by all genes or by communities. Valid arguments are full or communities (default is communities)"}
+  output_dir: {type: 'string?', doc: "Defines name for output folder"}
+  padj: {type: 'string?', doc: "Sets p-value adjusted for multiple steps of the tool, including, DESeq2, RobustRankAggreg, waddR and Spearman's Correlation (default is 0.05)"}
+  LFC: {type: 'string?', doc: "Defines log2FC value to filter significant DEG in DESeq2 (default is 1)"}
+  control_id: {type: 'string?', doc: "Specifies the id label for the control samples in the metadata files (default is Normal)"}
+  multiXrank_r: {type: 'string?', doc: "Defines global restart probability for multiXrank, takes values between 0 and 1 (default is 0.5)"}
+  multiXrank_selfloops: {type: 'int?', doc: "Defines whether self loops are removed or not, takes values 0 or 1 (default is 0)"}
+  Molti_modularity: {type: 'int?', doc: "Sets Newman modularity resolution parameter on molTI-DREAM (default is 1)"}
+  Molti_Louvain: {type: 'int?', doc: "Sets the number of randomizations on Louvain(default is 5)"}
 
 outputs:
-  output: {type: Directory, outputSource: multiaffinity/output, doc: "contains degs, communities and affinity information"}
+  output: {type: Directory, outputSource: tool/output, doc: "Contains degs, communities and affinity information"}
 
 steps:
-  multiaffinity:
+  tool:
     run: ./multiaffinity.cwl
     in:
       counts: counts
       metadata: metadata
-      network: network
-      DESeq2_padj: DESeq2_padj
-      DESeq2_LFC: DESeq2_LFC
-      RRA_Score: RRA_Score
-      waddR_pval: waddR_pval
-      waddR_permnum: waddR_permnum
+      layers: layers
+      approach: approach
+      output_dir: output_dir
+      padj: padj
+      LFC: LFC
       multiXrank_r: multiXrank_r
-      multiXrank_selfloops: multiXrank_selfloops
+      control_id: control_id
       Molti_modularity: Molti_modularity
+      multiXrank_selfloops: multiXrank_selfloops
       Molti_Louvain: Molti_Louvain
     out: [output]
+
+s:author:
+  - class: s:Person
+    s:email: mailto:mar.batlle@bsc.es
+    s:name: Mar Batlle
+  - class: s:Person
+    s:email: mailto:laura.rodriguez@bsc.es
+    s:name: Laura Rodríguez-Navas
+
+s:dateCreated: "2021-09-15"

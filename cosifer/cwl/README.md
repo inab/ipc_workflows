@@ -3,7 +3,7 @@
 The steps to easily test the workflow is:
 
 - Have [cwltool](https://github.com/common-workflow-language/cwltool) installed.
-- Test 1
+- Test
   - Change to workflow directory
   - Download example toy input file from <https://raw.githubusercontent.com/PhosphorylatedRabbits/cosifer/master/examples/interactive/data_matrix.csv>.
   - Use `cwltool` in this way:

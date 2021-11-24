@@ -3,109 +3,96 @@ class: CommandLineTool
 id: multiaffinity
 label: multiaffinity
 
-$namespaces:
-  s: http://schema.org/
-
 requirements:
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing:
       - $(inputs.counts)
       - $(inputs.metadata)
-      - $(inputs.network)
+      - $(inputs.layers)
 
 hints:
   DockerRequirement:
-    dockerPull: 'marbatlle/multiaffinity:latest'
+    dockerPull: 'marbatlle/multiaffinity'
 
-baseCommand: [multiAffinity]
+baseCommand: [multiaffinity]
 
 inputs:
   counts:
-    type: 'File[]'
+    type: File[]
     inputBinding:
       position: 1
       prefix: '-c'
       itemSeparator: ','
   metadata:
-    type: 'File[]'
+    type: File[]
     inputBinding:
       position: 2
       prefix: '-m'
       itemSeparator: ','
-  network:
-    type: 'File[]'
+  layers:
+    type: File[]
     inputBinding:
       position: 3
       prefix: '-n'
       itemSeparator: ','
-  DESeq2_padj:
+  output_dir:
     type: string?
-    default: "0.05"
+    default: "result"
     inputBinding:
       position: 4
-      prefix: '-a'
-  DESeq2_LFC:
+      prefix: '-o'
+  approach:
     type: string?
-    default: "1.0"
+    default: "communities"
     inputBinding:
       position: 5
-      prefix: '-b'
-  RRA_Score:
+      prefix: '-a'
+  padj:
     type: string?
     default: "0.05"
     inputBinding:
       position: 6
-      prefix: '-d'
-  waddR_pval:
+      prefix: '-b'
+  LFC:
     type: string?
-    default: "0.001"
+    default: "1.0"
     inputBinding:
       position: 7
-      prefix: '-e'
-  waddR_permnum:
-    type: int?
-    default: 100
+      prefix: '-d'
+  control_id:
+    type: string?
+    default: "Normal"
     inputBinding:
       position: 8
-      prefix: '-f'
+      prefix: '-e'
   multiXrank_r:
     type: string?
     default: "0.5"
     inputBinding:
       position: 9
-      prefix: '-g'
+      prefix: '-f'
   multiXrank_selfloops:
     type: int?
-    default: 0
+    default: 1
     inputBinding:
       position: 10
-      prefix: '-i'
+      prefix: '-g'
   Molti_modularity:
     type: int?
     default: 1
     inputBinding:
       position: 11
-      prefix: '-j'
+      prefix: '-i'
   Molti_Louvain:
     type: int?
-    default: 0
+    default: 5
     inputBinding:
       position: 12
-      prefix: '-k'
+      prefix: '-j'
 
 outputs:
   output:
     type: Directory
     outputBinding:
-      glob: '*'
-
-s:author:
-  - class: s:Person
-    s:email: mailto:mar.batlle@bsc.es
-    s:name: Mar Batlle
-  - class: s:Person
-    s:email: mailto:laura.rodriguez@bsc.es
-    s:name: Laura Rodríguez-Navas
-
-s:dateCreated: "2021-09-15"
+      glob: $(inputs.output_dir)
