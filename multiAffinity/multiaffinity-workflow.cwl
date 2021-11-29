@@ -43,9 +43,11 @@ steps:
 
 s:author:
   - class: s:Person
+    s:identifier: https://orcid.org/0000-0001-8508-6234
     s:email: mailto:mar.batlle@bsc.es
     s:name: Mar Batlle
   - class: s:Person
+    s:identifier: https://orcid.org/0000-0003-4929-1219
     s:email: mailto:laura.rodriguez@bsc.es
     s:name: Laura Rodríguez-Navas
 
