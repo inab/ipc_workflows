@@ -74,7 +74,7 @@ inputs:
       prefix: '-f'
   multiXrank_selfloops:
     type: int?
-    default: 1
+    default: 0
     inputBinding:
       position: 10
       prefix: '-g'
