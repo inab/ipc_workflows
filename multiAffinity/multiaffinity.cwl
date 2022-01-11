@@ -44,7 +44,7 @@ inputs:
       prefix: '-o'
   approach:
     type: string?
-    default: "communities"
+    default: "local"
     inputBinding:
       position: 5
       prefix: '-a'
@@ -68,13 +68,13 @@ inputs:
       prefix: '-e'
   multiXrank_r:
     type: string?
-    default: "0.5"
+    default: "0.15"
     inputBinding:
       position: 9
       prefix: '-f'
   multiXrank_selfloops:
     type: int?
-    default: 0
+    default: 1
     inputBinding:
       position: 10
       prefix: '-g'

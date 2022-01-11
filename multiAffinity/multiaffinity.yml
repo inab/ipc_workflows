@@ -1,10 +1,10 @@
 output_dir: "result"
 counts:
   - class: File
-    location: sample_data/sample_data.csv
+    location: sample_data/sample1_data.csv
 metadata:
   - class: File
-    location: sample_data/sample_metadata.csv
+    location: sample_data/sample1_metadata.csv
 layers:
   - class: File
-    location: sample_data/sample_layers.csv
+    location: sample_data/sample1_layer.csv
