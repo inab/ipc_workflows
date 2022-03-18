@@ -13,7 +13,7 @@ requirements:
 
 hints:
   DockerRequirement:
-    dockerPull: 'marbatlle/multiaffinity'
+    dockerPull: 'marbatlle/multiaffinity:latest'
 
 baseCommand: [multiaffinity]
 
@@ -31,7 +31,7 @@ inputs:
       prefix: '-m'
       itemSeparator: ','
   layers:
-    type: File[]
+    type: File[]?
     inputBinding:
       position: 3
       prefix: '-n'
@@ -90,6 +90,12 @@ inputs:
     inputBinding:
       position: 12
       prefix: '-j'
+  min_nodes:
+    type: int?
+    default: 7
+    inputBinding:
+      position: 13
+      prefix: '-k'
 
 outputs:
   output:

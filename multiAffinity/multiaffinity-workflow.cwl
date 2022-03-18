@@ -9,7 +9,7 @@ $namespaces:
 inputs:
   counts: {type: 'File[]', doc: "Count Matrices of the RNA-Seq studies - List of input CSV files, separated by commas"}
   metadata: {type: 'File[]', doc: "Metadata of the RNA-Seq studies - List of input CSV files, separated by commas"}
-  layers: {type: 'File[]', doc: "Layers of the multilayer networks - List of input CSV files, separated by commas"}
+  layers: {type: 'File[]?', doc: "Layers of the multilayer networks - List of input CSV files, separated by commas"}
   approach: {type: 'string?', doc: "Computes correlation on each community or respect all genes, local or global approach (default is local)"}
   output_dir: {type: 'string?', doc: "Defines name for output folder"}
   padj: {type: 'string?', doc: "Sets significance value for DESeq2, RRA, and Spearman's Corr (default is 0.05)"}
@@ -19,6 +19,7 @@ inputs:
   multiXrank_selfloops: {type: 'int?', doc: "Defines whether self loops are removed or not, takes values 0 or 1 (default is 1)"}
   Molti_modularity: {type: 'int?', doc: "Sets Newman modularity resolution parameter on molTI-DREAM (default is 1)"}
   Molti_Louvain: {type: 'int?', doc: "Switches to randomized Louvain on molTI-DREAM and sets num. of randomizations (default is 5)"}
+  min_nodes: {type: 'int?', doc: "Defines minimum number of nodes required to describe a community (default is 7)"}
 
 outputs:
   output: {type: Directory, outputSource: tool/output, doc: "Contains degs, communities and affinity information"}
@@ -39,6 +40,7 @@ steps:
       Molti_modularity: Molti_modularity
       multiXrank_selfloops: multiXrank_selfloops
       Molti_Louvain: Molti_Louvain
+      min_nodes: min_nodes
     out: [output]
 
 s:author:
