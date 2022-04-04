@@ -5,6 +5,3 @@ counts:
 metadata:
   - class: File
     location: sample_data/sample1_metadata.csv
-layers:
-  - class: File
-    location: sample_data/sample1_layer.csv
